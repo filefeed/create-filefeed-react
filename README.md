@@ -16,11 +16,12 @@ npm start
 
 3) Try the importer
 - Click "Open Importer" and drop `getting-started.csv`.
+- You can also use the "Download sample CSV" link in the UI.
 
 ## Where to customize
 
-- Edit the sheet schema in `src/components/Filefeed/FilefeedQuickstart.tsx` (the `fields` array).
-- Handle submission in the `onSubmit` handler of the `FilefeedSheet` component.
+- Edit fields in `src/FilefeedImporter.tsx` (`sheetConfig.fields`).
+- Handle submission in `onSubmit` of `FilefeedSheet`.
 
 ## Minimal usage
 

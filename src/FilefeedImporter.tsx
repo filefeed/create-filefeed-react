@@ -33,41 +33,38 @@ function Inner() {
   );
 
   return (
-    <div className="content">
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <OpenImporterButton onClick={() => (open ? closePortal() : openPortal())}>
-          {open === true ? "Close Importer" : "Open Importer"}
-        </OpenImporterButton>
-        {open === true && (
-          <button
-            onClick={closePortal}
-            style={{
-              position: "fixed",
-              top: "12px",
-              right: "12px",
-              background: "white",
-              border: "1px solid #e1e5e9",
-              padding: "8px 12px",
-              borderRadius: "6px",
-              cursor: "pointer",
-              boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
-            }}
-          >
-            Exit
-          </button>
-        )}
-      </div>
+    <div className="container">
+      <section className="hero">
+        <h1>Filefeed Importer</h1>
+        <p>Drop in a fast, friendly CSV/XLSX importer.</p>
+        <div className="cta-row">
+          <OpenImporterButton onClick={() => (open ? closePortal() : openPortal())}>
+            {open === true ? "Close Importer" : "Open Importer"}
+          </OpenImporterButton>
+          <a className="cta-link" href={process.env.PUBLIC_URL + "/getting-started.csv"} download>
+            Download sample CSV
+          </a>
+        </div>
+      </section>
 
-      <FilefeedSheet
-        config={sheetConfig}
-        onSubmit={async (sheet) => {
-          console.log("on Workbook Submit ", { sheet });
-        }}
-        onRecordHook={(record) => {
-          record.set("lastName", "Rock");
-          return record;
-        }}
-      />
+      <ul className="feature-list">
+        <li>Drag & drop files</li>
+        <li>Smart column mapping</li>
+        <li>Inline validations</li>
+      </ul>
+
+      <div className="content">
+        <FilefeedSheet
+          config={sheetConfig}
+          onSubmit={async (sheet) => {
+            console.log("on Workbook Submit ", { sheet });
+          }}
+          onRecordHook={(record) => {
+            record.set("lastName", "Rock");
+            return record;
+          }}
+        />
+      </div>
     </div>
   );
 }
