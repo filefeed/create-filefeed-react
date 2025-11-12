@@ -1,5 +1,5 @@
 import type React from "react";
-import { FilefeedProvider, FilefeedSheet, useFilefeed, useFilefeedEvent, type Filefeed } from "@filefeed/react";
+import { FilefeedProvider, FilefeedSheet, useFilefeed, type Filefeed } from "@filefeed/react";
 
 const sheetConfig: Filefeed.SheetConfig = {
   name: "Sheet",
@@ -25,12 +25,6 @@ function OpenImporterButton({ onClick, children }: { onClick: React.MouseEventHa
 
 function Inner() {
   const { open, openPortal, closePortal } = useFilefeed();
-
-  useFilefeedEvent(
-    "job:outcome-acknowledged",
-    { operation: `sheetSubmitAction-${sheetConfig.slug}`, status: "complete" },
-    () => closePortal()
-  );
 
   return (
     <div className="container">
